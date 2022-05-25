@@ -9,8 +9,8 @@ Also we need user to give message he wants to encrypt - there are two types:
 2. string message - message gets splited in chars -> to int by ASCII table. Each int gets encrypted/decrypted 
 program implements two types of methods, for each type of message - there are special parts in method's names for them:
 1. "ForIntMessage" methods - for int message:
-\n -BigInteger encryptForInt(BigInteger message) - computes c(encrypted message) variable;
-\n -BigInteger decryptForInt(BigInteger c) - decodes c returning inputed message;
+-BigInteger encryptForInt(BigInteger message) - computes c(encrypted message) variable;
+-BigInteger decryptForInt(BigInteger c) - decodes c returning inputed message;
 
 2. "ForStringMessage" - for string message
 -BigInteger[] encryptForStringMessage(String message) - encodes string message by transorming string message into BigInt array , using strToInt() method, returns Bigint array;
