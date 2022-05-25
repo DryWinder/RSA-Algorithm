@@ -10,10 +10,12 @@ Also we need user to give message he wants to encrypt - there are two types:
 program implements two types of methods, for each type of message - there are special parts in method's names for them:
 1. "ForIntMessage" methods - for int message:
 -BigInteger encryptForInt(BigInteger message) - computes c(encrypted message) variable;
+
 -BigInteger decryptForInt(BigInteger c) - decodes c returning inputed message;
 
 2. "ForStringMessage" - for string message
 -BigInteger[] encryptForStringMessage(String message) - encodes string message by transorming string message into BigInt array , using strToInt() method, returns Bigint array;
+
 -BigInteger[] encrypt(RSA rsa, String message) - encodes string message, returns BigInt array
 -int[] decryptForStringMessage(BigInteger[] array) - decryptes every element in BigInt array of encoded values, using decryptForInt() method;
 -String decrypt(RSA rsa, int[] encryptedSequence) - returns decoded string message;
