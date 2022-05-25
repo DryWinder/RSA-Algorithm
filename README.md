@@ -1,5 +1,5 @@
 This program implements RSA Algorithm ( https://en.wikipedia.org/wiki/RSA_(cryptosystem) )
-By creating RSA Class, which has such BigInteger variables:
+By creating RSA Class, which has such BigInteger variables as:
 p, q, n = (p*q), e, f_n = (p-1)*(q-1), d = e^(-1)mod(f_n) - This means: solve for d the equation d⋅e ≡ 1 (mod f_n(n));
 
 Program operates with large numbers, that sometimes bigger than int and long, so it's a point to use BigInteger class.
