@@ -22,5 +22,5 @@ program implements two types of methods, for each type of message - there are sp
 
 3. -BigInteger[] strToInt(String message) - transorms string message into BigInt array;
 
-Usage of program you can check in RSA.main();
+Usage of message you can check in RSA.main();
 Good luck!
