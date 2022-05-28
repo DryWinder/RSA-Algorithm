@@ -25,10 +25,11 @@ public class RSA {
     public BigInteger decryptForInt(BigInteger c){
         BigInteger message;
         message = c.modPow(d,n);
+
         return message;
     }
 
-    public BigInteger[] strToInt(String message){
+    private BigInteger[] strToInt(String message){
         BigInteger[] intMessageArray = new BigInteger[message.length()];
         for (int i = 0; i < message.length(); i++) {
             BigInteger elOfIntArr = BigInteger.valueOf(((int) message.charAt(i)));
@@ -37,7 +38,7 @@ public class RSA {
         return intMessageArray;
     }
 
-    public BigInteger[] encryptForStringMessage(String message){
+    private BigInteger[] encryptForStringMessage(String message){
         BigInteger[] intMessageArr = strToInt(message);
         BigInteger[] encryptedIntMessageArr = new BigInteger[intMessageArr.length];
         for (int i = 0; i < intMessageArr.length; i++) {
@@ -47,7 +48,7 @@ public class RSA {
         return encryptedIntMessageArr;
     }
 
-    public int[] decryptForStringMessage(BigInteger[] array){
+    private int[] decryptForStringMessage(BigInteger[] array){
         int[] DecryptedIntMessageArr = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             BigInteger DecryptElemOfIntMessage = decryptForInt(array[i]);
@@ -76,18 +77,21 @@ public class RSA {
         return decryptedMessage;
     }
 
-    public static void main(String[] args) {
-        RSA rsa = new RSA(BigInteger.valueOf(5), BigInteger.valueOf(47), BigInteger.valueOf(37));
+    private BigInteger[] intToBigIntArray(int[] array){
+        BigInteger[] encArr = new BigInteger[array.length];
+        for (int i = 0; i < array.length ; i++) {
+            encArr[i] = BigInteger.valueOf(array[i]);
+        }
+        return encArr;
+    }
+    public void infoRSA(RSA rsa, BigInteger[] encArr){
         System.out.println("p = " + rsa.p + " q = " + rsa.q + " n = " + rsa.n + " e = " + rsa.e);
         System.out.println("Public key {e, n} = " + "{" + rsa.e + ", " + rsa.n + "}");
         System.out.println("Private key {d, n} = " + "{" + rsa.d + ", " + rsa.n + "}");
-        
         System.out.println("F_n = " + rsa.f_n + " d = " + rsa.d );
-        int[] intEncArr = {82, 41, 190, 14, 98, 63, 145, 157};
-        BigInteger[] encArr = new BigInteger[intEncArr.length];
+
         System.out.println("Encrypted sequence: ");
-        for (int i = 0; i < intEncArr.length ; i++) {
-            encArr[i] = BigInteger.valueOf(intEncArr[i]);
+        for (int i = 0; i < encArr.length ; i++) {
             System.out.print(encArr[i] + ", ");
         }
 
@@ -96,7 +100,14 @@ public class RSA {
         for (int i = 0; i < decSeq.length; i++) {
             System.out.print(decSeq[i] + ", ");
         }
+
         System.out.println("\nDecrypted message: " + rsa.decrypt(rsa, decSeq));
+    }
+    public static void main(String[] args) {
+        RSA rsa = new RSA(BigInteger.valueOf(5), BigInteger.valueOf(47), BigInteger.valueOf(37));
+        int[] intEncArr = {82, 41, 190, 14, 98, 63, 145, 157};
+        BigInteger[] encArr = rsa.intToBigIntArray(intEncArr);
+        rsa.infoRSA(rsa, encArr);
     }
 }
 
