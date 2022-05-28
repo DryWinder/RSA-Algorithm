@@ -4,9 +4,10 @@ p, q, n = (p*q), e, f_n = (p-1)*(q-1), d = e^(-1)mod(f_n) - This means: solve fo
 
 Program operates with large numbers, that sometimes bigger than int and long, so it's a point to use BigInteger class.
 Program takes some values from user - (p, q, e) to create Object of RSA class (RSA rsa)
-Also we need user to give message he wants to encrypt - there are two types:
+Also we need user to give message he wants to encrypt - there are two types of messages:
 1. int message - stands for int number to encrypt&decrypt
 2. string message - message gets splited in chars -> to int by ASCII table. Each int gets encrypted/decrypted 
+
 program implements two types of methods, for each type of message - there are special parts in method's names for them:
 1. "ForIntMessage" methods - for int message:
 -BigInteger encryptForInt(BigInteger message) - computes c(encrypted message) variable;
