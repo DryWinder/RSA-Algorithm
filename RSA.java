@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.math.*;
 
 public class RSA {
@@ -58,7 +60,7 @@ public class RSA {
         return DecryptedIntMessageArr;
     }
 
-    public BigInteger[] encrypt(RSA rsa, String message){
+    public BigInteger[] encrypt(@NotNull RSA rsa, String message){
         System.out.println("Encrypted sequence from message '" + message +"':");
         BigInteger[] enc = rsa.encryptForStringMessage(message);
         for (int i = 0; i < enc.length; i++) {
@@ -67,7 +69,7 @@ public class RSA {
         return enc;
     }
 
-    public String decrypt(RSA rsa, int[] encryptedSequence){
+    public String decrypt(@NotNull RSA rsa, int[] encryptedSequence){
         char[] DecryptedCharMessageArr = new char[encryptedSequence.length];
         for (int i = 0; i < encryptedSequence.length; i++) {
             char elOfDecryptMessageArr = (char) encryptedSequence[i];
@@ -84,7 +86,7 @@ public class RSA {
         }
         return encArr;
     }
-    public void infoRSA(RSA rsa, BigInteger[] encArr){
+    public void infoRSA(@NotNull RSA rsa, BigInteger[] encArr){
         System.out.println("p = " + rsa.p + " q = " + rsa.q + " n = " + rsa.n + " e = " + rsa.e);
         System.out.println("Public key {e, n} = " + "{" + rsa.e + ", " + rsa.n + "}");
         System.out.println("Private key {d, n} = " + "{" + rsa.d + ", " + rsa.n + "}");
@@ -110,4 +112,3 @@ public class RSA {
         rsa.infoRSA(rsa, encArr);
     }
 }
-
